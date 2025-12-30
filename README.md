@@ -1,33 +1,56 @@
-# Exercício – Herança e Polimorfismo em C#
+Classe Animal e derivadas Cachorro, Gato e Vaca com método Falar().
 
-Este projeto é um exercício académico desenvolvido em C#
-para demonstrar os conceitos de Programação Orientada a Objetos.
+*******************************************************************************/
+using System;
+class Animal {
+    
+    protected string nome;
+    protected int idade;
+    
+    public Animal(string nome, int idade){
+        this.nome=nome;
+        this.idade=idade;
+    }
+    public virtual void falar(){
+        Console.WriteLine("O animal emite um som");
+    }
+    public void mostrarDados(){
+        Console.WriteLine($"Nome: {nome} | Idade: {idade} anos");
+    }
+}
+    class Cachorro:Animal{
+        
+        public Cachorro(string nome, int idade):base(nome, idade){
+    }
+    public override void falar(){
+        Console.WriteLine($"O Cachorro {nome} late: Au au au!");
+    }
+    }
+    class Gato:Animal{
+        
+        public Gato(string nome, int idade):base(nome, idade){
+    }
+    public override void falar(){
+        Console.WriteLine($"O Gato {nome} mia: Miau!");
+    }
+    }
+    class Vaca:Animal{
+        
+        public Vaca(string nome, int idade):base(nome, idade){
+    }
+    public override void falar(){
+        Console.WriteLine($"A Vaca {nome} muge: Muuu!");
+    }
+    }
 
-## Descrição
-Implementação da classe base `Animal` e das classes derivadas:
-- Cachorro
-- Gato
-- Vaca
-
-Cada classe sobrescreve o método `Falar()`, demonstrando
-o uso de polimorfismo.
-
-## Funcionalidades
-- Criação de diferentes tipos de animais
-- Armazenamento em um array do tipo Animal
-- Chamada dinâmica do método `Falar()`
-- Exibição dos dados de cada animal
-
-## Conceitos aplicados
-- Encapsulamento
-- Herança
-- Polimorfismo
-- Métodos virtuais e sobrescrita (`virtual` / `override`)
-- Arrays de objetos
-
-## Tecnologias
-- Linguagem: C#
-- Plataforma: .NET Console Application
-
-## Autor
-Amos Sitoe
+    class AnimalTeste{
+  static void Main(string[]args) {
+      
+     Animal [] animais={new Cachorro("Maçãnzinha", 3), new Gato("Liroy", 2), new Vaca("Mimosa", 4)};
+  
+  for(int i=0; i<animais.Length;i++){
+      animais[i].mostrarDados();
+      animais[i].falar();
+  }
+}
+}
